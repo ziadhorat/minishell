@@ -6,7 +6,7 @@
 /*   By: zmahomed <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/17 13:42:00 by zmahomed          #+#    #+#             */
-/*   Updated: 2019/07/17 13:42:21 by zmahomed         ###   ########.fr       */
+/*   Updated: 2019/07/17 14:33:08 by zmahomed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,29 +32,18 @@ static int		exec_commands(char **commands)
 	return (0);
 }
 
-/*
-**	This function increments the $SHLVL variable. Also voids argc and argv so that
-**	I don't have to, just so I can save lines. Thanks norminette.
-*/
-
-static void		set_sh_level(int argc, char *argv[])
+static void		set_sh_level(int ac, char *av[])
 {
 	char	*level;
 
-	(void)argc;
-	(void)argv;
+	(void)ac;
+	(void)av;
 	level = ft_itoa(ft_atoi(get_env("SHLVL")) + 1);
 	set_env_var("SHLVL", level);
 	free(level);
 }
 
-/*
-**	While I use readline() for the bonuses like history and line editing,
-**	I can just as easily display my own prompt as well as use my get next line
-**	for input.
-*/
-
-int				main(int argc, char *argv[], char *env[])
+int				main(int ac, char *av[], char *env[])
 {
 	int		ret;
 	char	*line;
@@ -62,7 +51,7 @@ int				main(int argc, char *argv[], char *env[])
 	char	**commands;
 
 	init_env(env);
-	set_sh_level(argc, argv);
+	set_sh_level(ac, av);
 	while (1)
 	{
 		prompt = get_handled_path();

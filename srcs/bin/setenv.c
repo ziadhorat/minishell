@@ -6,18 +6,11 @@
 /*   By: zmahomed <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/17 12:44:41 by zmahomed          #+#    #+#             */
-/*   Updated: 2019/07/17 14:20:28 by zmahomed         ###   ########.fr       */
+/*   Updated: 2019/07/17 14:36:46 by zmahomed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-/*
-**	find_env_index(char *key)
-**
-**	OBJECTIVE: find key within g_env, return index if found,
-**	otherwise return -1
-*/
 
 static int		find_env_index(char *key)
 {
@@ -38,14 +31,6 @@ static int		find_env_index(char *key)
 	free(temp);
 	return (-1);
 }
-
-/*
-**	new_env_var(char *key, char *value)
-**
-**	OBJECTIVE: Allocate new environmental variable array, copy over existing
-**	contents, then add new key:value pair. Then free g_env and assign
-**	it to new array
-*/
 
 static void		new_env_var(char *key, char *value)
 {
@@ -74,13 +59,6 @@ static void		new_env_var(char *key, char *value)
 	g_env = new_env;
 }
 
-/*
-**	set_env_var(char *key, char *value)
-**
-**	OBJECTIVE: If key:value pair exists, free, alloc, and set new
-**	key:value pair in g_env
-*/
-
 int				set_env_var(char *key, char *value)
 {
 	int		i;
@@ -102,10 +80,6 @@ int				set_env_var(char *key, char *value)
 		new_env_var(key, value);
 	return (0);
 }
-
-/*
-**	Just a wrapper function for set_env_var
-*/
 
 int				setenv_b(char **command)
 {

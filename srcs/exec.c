@@ -6,16 +6,11 @@
 /*   By: zmahomed <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/17 13:41:54 by zmahomed          #+#    #+#             */
-/*   Updated: 2019/07/17 14:05:00 by zmahomed         ###   ########.fr       */
+/*   Updated: 2019/07/17 14:34:27 by zmahomed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
-
-/*
-**	is_bulitin and exec_builtin could definitely be combined, or re formatted
-**	as a dispatch table for cleaner code. I'll implement it later.
-*/
 
 int				exec_path(char *ex_path, char **command)
 {
