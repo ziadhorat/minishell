@@ -6,7 +6,7 @@
 /*   By: zmahomed <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/17 13:36:09 by zmahomed          #+#    #+#             */
-/*   Updated: 2019/07/23 08:15:30 by zmahomed         ###   ########.fr       */
+/*   Updated: 2019/07/23 08:38:25 by zmahomed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,37 +24,23 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 
-/*
-**	Global variable/s
-*/
-
 char			**g_env;
-
-/*
-**	prototypes
-*/
-
-char			*get_env(char *env_var);
-void			handle_input(char **command);
-void			initialize_env(char *env[]);
+char			*get_env(char *a);
+void			handle_input(char **a);
+void			initialize_env(char *a[]);
 void			display_prompt(void);
-int				exec_command(char **command);
-int				env_len(char *env[]);
-
-/*
-**	Bin prototypes
-*/
-
+int				exec_command(char **a);
+int				env_len(char *a[]);
 int				env_b(void);
-int				cd_b(char **command, int print);
-int				set_env_var(char *key, char *value);
-int				setenv_b(char **command);
-int				unsetenv_b(char **command);
-int				echo_b(char **command);
-int				exec_path(char *ex_path, char **command);
-char			*in_path(char **command);
-int				is_executable(char **command, char *bin, struct stat info);
+int				cd_b(char **a, int b);
+int				set_env_var(char *a, char *b);
+int				setenv_b(char **a);
+int				unsetenv_b(char **a);
+int				echo_b(char **a);
+int				exec_path(char *a, char **b);
+char			*in_path(char **a);
+int				is_executable(char **a, char *b, struct stat c);
 char			*get_handled_path(void);
-int				change_dir(char *path, int print);
+int				change_dir(char *a, int b);
 
 #endif
