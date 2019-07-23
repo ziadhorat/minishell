@@ -6,15 +6,13 @@
 /*   By: zmahomed <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/17 13:42:08 by zmahomed          #+#    #+#             */
-/*   Updated: 2019/07/17 14:05:28 by zmahomed         ###   ########.fr       */
+/*   Updated: 2019/07/23 08:15:41 by zmahomed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-#define NOT_SPECIAL(c) ((c != '$' && c != ':') ? 1 : 0)
-
-static char		*parse_env_var(char *str, int index)
+static char		*handle_env_var(char *str, int index)
 {
 	char	*new;
 
@@ -25,7 +23,7 @@ static char		*parse_env_var(char *str, int index)
 	return (new);
 }
 
-static char		*parse_command(char *str, int i)
+static char		*handle_com(char *str, int i)
 {
 	char	*var;
 	char	*new;
@@ -35,7 +33,7 @@ static char		*parse_command(char *str, int i)
 	{
 		if (str[i] == '$')
 		{
-			var = parse_env_var(str, i++ + 1);
+			var = handle_env_var(str, i++ + 1);
 			new = ft_strjoinf(new, ((get_env(var)) ? get_env(var) : "$"));
 			free(var);
 			while (str[i] && str[i] != ' ' && NOT_SPECIAL(str[i]))
@@ -54,18 +52,18 @@ static char		*parse_command(char *str, int i)
 	return (new);
 }
 
-void			parse_input(char **command)
+void			handle_input(char **com)
 {
 	int		i;
 
 	i = 0;
-	if (!command || !*command)
+	if (!com || !*com)
 		return ;
-	while (command[i])
+	while (com[i])
 	{
-		if (ft_strchr(command[i], '$') != NULL ||
-		ft_strchr(command[i], '~') != NULL)
-			command[i] = parse_command(command[i], 0);
+		if (ft_strchr(com[i], '$') != NULL ||
+		ft_strchr(com[i], '~') != NULL)
+			com[i] = handle_com(com[i], 0);
 		i++;
 	}
 }

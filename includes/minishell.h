@@ -6,24 +6,15 @@
 /*   By: zmahomed <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/17 13:36:09 by zmahomed          #+#    #+#             */
-/*   Updated: 2019/07/17 13:43:56 by zmahomed         ###   ########.fr       */
+/*   Updated: 2019/07/23 08:15:30 by zmahomed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
-
-/*
-**	MACROS
-*/
-
 # define PATH_MAX 4096
+# define NOT_SPECIAL(c) ((c != '$' && c != ':') ? 1 : 0)
 # define SUCCESS 0
-
-/*
-**	INCLUDES
-*/
-
 # include "../libft/libft.h"
 # include <sys/types.h>
 # include <sys/stat.h>
@@ -34,25 +25,24 @@
 # include <readline/history.h>
 
 /*
-**	GLOBALS
+**	Global variable/s
 */
 
 char			**g_env;
 
 /*
-**	PROTOTYPES
+**	prototypes
 */
 
 char			*get_env(char *env_var);
-
-void			parse_input(char **command);
-void			init_env(char *env[]);
+void			handle_input(char **command);
+void			initialize_env(char *env[]);
 void			display_prompt(void);
 int				exec_command(char **command);
 int				env_len(char *env[]);
 
 /*
-**	BUILT-INS
+**	Bin prototypes
 */
 
 int				env_b(void);

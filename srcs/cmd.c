@@ -6,18 +6,18 @@
 /*   By: zmahomed <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/17 13:41:23 by zmahomed          #+#    #+#             */
-/*   Updated: 2019/07/17 14:06:07 by zmahomed         ###   ########.fr       */
+/*   Updated: 2019/07/23 08:22:59 by zmahomed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-int		is_executable(char **command, char *bin, struct stat info)
+int		is_executable(char **com, char *bin, struct stat info)
 {
 	if (S_ISREG(info.st_mode))
 	{
 		if (info.st_mode & S_IXUSR)
-			return (exec_path(bin, command));
+			return (exec_path(bin, com));
 		else
 		{
 			ft_putstr("minishell: permission denied: ");
@@ -30,7 +30,7 @@ int		is_executable(char **command, char *bin, struct stat info)
 	return (1);
 }
 
-char	*in_path(char **command)
+char	*in_path(char **com)
 {
 	int				i;
 	char			**bin;
@@ -41,10 +41,10 @@ char	*in_path(char **command)
 	bin = ft_strsplit(get_env("PATH"), ':');
 	while (bin[i])
 	{
-		if (ft_starts_with(bin[i], command[0]))
-			path = ft_strdup(command[0]);
+		if (ft_starts_with(bin[i], com[0]))
+			path = ft_strdup(com[0]);
 		else
-			path = ft_pathjoin(bin[i], command[0]);
+			path = ft_pathjoin(bin[i], com[0]);
 		if (lstat(path, &info) == -1)
 			free(path);
 		else

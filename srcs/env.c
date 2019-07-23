@@ -6,7 +6,7 @@
 /*   By: zmahomed <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/17 13:41:33 by zmahomed          #+#    #+#             */
-/*   Updated: 2019/07/17 13:42:23 by zmahomed         ###   ########.fr       */
+/*   Updated: 2019/07/23 08:11:18 by zmahomed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int				env_len(char *env[])
 	return (i);
 }
 
-void			init_env(char *env[])
+void			initialize_env(char *env[])
 {
 	int		len;
 

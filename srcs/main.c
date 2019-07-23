@@ -6,33 +6,36 @@
 /*   By: zmahomed <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/17 13:42:00 by zmahomed          #+#    #+#             */
-/*   Updated: 2019/07/17 14:33:08 by zmahomed         ###   ########.fr       */
+/*   Updated: 2019/07/23 08:19:00 by zmahomed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-static int		exec_commands(char **commands)
+static int		exec_com(char **coms)
 {
 	int		i;
 	int		ret;
-	char	**command;
+	char	**com;
 
 	i = 0;
-	while (commands[i])
+	while (coms[i])
 	{
-		command = ft_strsplit(commands[i], ' ');
-		parse_input(command);
-		ret = exec_command(command);
-		ft_freestrarray(command);
+		com = ft_strsplit(coms[i], ' ');
+		handle_input(com);
+		ret = exec_command(com);
+		ft_freestrarray(com);
 		if (ret == -1)
+		{
+			ft_freestrarray(coms);
 			return (-1);
+		}
 		i++;
 	}
 	return (0);
 }
 
-static void		set_sh_level(int ac, char *av[])
+static void		sh_level(int ac, char *av[])
 {
 	char	*level;
 
@@ -45,24 +48,21 @@ static void		set_sh_level(int ac, char *av[])
 
 int				main(int ac, char *av[], char *env[])
 {
-	int		ret;
 	char	*line;
 	char	*prompt;
-	char	**commands;
+	char	**coms;
 
-	init_env(env);
-	set_sh_level(ac, av);
+	initialize_env(env);
+	sh_level(ac, av);
 	while (1)
 	{
 		prompt = get_handled_path();
 		line = readline(prompt);
 		free(prompt);
 		add_history(line);
-		commands = ft_strsplit(line, ';');
+		coms = ft_strsplit(line, ';');
 		free(line);
-		ret = exec_commands(commands);
-		ft_freestrarray(commands);
-		if (ret == -1)
+		if (exec_com(coms) == -1)
 			break ;
 	}
 	ft_freestrarray(g_env);
