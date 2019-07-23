@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_freestrarray.c                                  :+:      :+:    :+:   */
+/*   ft_remnchars.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmahomed <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mbotes <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/17 13:49:24 by zmahomed          #+#    #+#             */
-/*   Updated: 2019/07/23 13:35:54 by mbotes           ###   ########.fr       */
+/*   Created: 2019/06/29 10:53:35 by mbotes            #+#    #+#             */
+/*   Updated: 2019/07/23 11:01:48 by mbotes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_freestrarray(char **str)
+void	ft_remnchars(char **c, size_t n)
 {
-	int		i;
+	char	*str;
 
-	i = 0;
-	while ((str)[i])
-		free((str)[i++]);
-	free(str);
+	str = ft_strdup(*(c) + n);
+	ft_strdel(c);
+	if (str != NULL)
+		*c = ft_strdupdel(&str);
 }

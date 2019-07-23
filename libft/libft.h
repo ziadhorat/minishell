@@ -6,7 +6,7 @@
 /*   By: zmahomed <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 11:49:55 by zmahomed          #+#    #+#             */
-/*   Updated: 2019/07/23 08:27:31 by zmahomed         ###   ########.fr       */
+/*   Updated: 2019/07/23 13:35:32 by mbotes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,5 +129,8 @@ char				*ft_strjoinchf(char *str, char c);
 char				*ft_strjoinf(char *s1, char *s2);
 void				ft_freestrarray(char **str);
 int					ft_starts_with(char *to_start, char *str);
+void				ft_remnchars(char **c, size_t n);
+char				*ft_strdupdel(char **str);
+int					ft_iswhitespace(char c);
 
 #endif

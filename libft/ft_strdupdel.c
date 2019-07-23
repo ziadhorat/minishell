@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_freestrarray.c                                  :+:      :+:    :+:   */
+/*   ft_strdupdel.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmahomed <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mbotes <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/17 13:49:24 by zmahomed          #+#    #+#             */
-/*   Updated: 2019/07/23 13:35:54 by mbotes           ###   ########.fr       */
+/*   Created: 2019/06/05 16:09:06 by mbotes            #+#    #+#             */
+/*   Updated: 2019/06/05 16:10:06 by mbotes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_freestrarray(char **str)
+char	*ft_strdupdel(char **str)
 {
-	int		i;
+	char	*tmp;
 
-	i = 0;
-	while ((str)[i])
-		free((str)[i++]);
-	free(str);
+	tmp = ft_strdup(*str);
+	ft_strdel(str);
+	return (tmp);
 }

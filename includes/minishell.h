@@ -6,7 +6,7 @@
 /*   By: zmahomed <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/17 13:36:09 by zmahomed          #+#    #+#             */
-/*   Updated: 2019/07/23 08:54:50 by zmahomed         ###   ########.fr       */
+/*   Updated: 2019/07/23 11:36:31 by mbotes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,6 @@ char			*in_path(char **a);
 int				is_executable(char **a, char *b, struct stat c);
 char			*get_handled_path(void);
 int				change_dir(char *a, int b);
+char			**argsplit(char *str);
 
 #endif

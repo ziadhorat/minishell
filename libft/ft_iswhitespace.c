@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_freestrarray.c                                  :+:      :+:    :+:   */
+/*   ft_iswhitespace.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmahomed <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mbotes <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/17 13:49:24 by zmahomed          #+#    #+#             */
-/*   Updated: 2019/07/23 13:35:54 by mbotes           ###   ########.fr       */
+/*   Created: 2019/05/18 09:15:56 by mbotes            #+#    #+#             */
+/*   Updated: 2019/05/21 09:10:34 by mbotes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_freestrarray(char **str)
+int	ft_iswhitespace(char c)
 {
-	int		i;
-
-	i = 0;
-	while ((str)[i])
-		free((str)[i++]);
-	free(str);
+	return (c == ' ' || c == '\t' || c == '\n' || c == '\v' ||
+			c == '\r' || c == '\f');
 }
