@@ -4,7 +4,7 @@ LIBFT_PATH = ./libft/
 
 SRC_PATH = ./srcs/
 
-SRC_NAME =	main.c prompt.c enviroment.c execute.c input.c command.c bin/cd.c bin/env_b.c \
+SRC_NAME =	main.c prompt.c enviroment.c execute.c input.c command.c bin/cd.c \
 			bin/setenv.c bin/unsetenv.c bin/echo.c
 
 FLAGS = -Wall -Werror -Wextra

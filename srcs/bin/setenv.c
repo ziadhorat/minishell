@@ -6,11 +6,21 @@
 /*   By: zmahomed <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/17 12:44:41 by zmahomed          #+#    #+#             */
-/*   Updated: 2019/07/17 14:36:46 by zmahomed         ###   ########.fr       */
+/*   Updated: 2019/07/23 08:45:39 by zmahomed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
+int				env_b(void)
+{
+	int		i;
+
+	i = 0;
+	while (g_env[i])
+		ft_putendl(g_env[i++]);
+	return (0);
+}
 
 static int		find_env_index(char *key)
 {
@@ -81,17 +91,17 @@ int				set_env_var(char *key, char *value)
 	return (0);
 }
 
-int				setenv_b(char **command)
+int				setenv_b(char **com)
 {
-	if (!command[1])
+	if (!com[1])
 		ft_putstr("setenv: too few arguments\n");
-	else if (command[1] && command[2] && command[3])
+	else if (com[1] && com[2] && com[3])
 		ft_putstr("setenv: too many arguments\n");
 	else
 	{
-		if (!command[2])
-			return (set_env_var(command[1], ""));
-		return (set_env_var(command[1], command[2]));
+		if (!com[2])
+			return (set_env_var(com[1], ""));
+		return (set_env_var(com[1], com[2]));
 	}
 	return (1);
 }

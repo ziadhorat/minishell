@@ -6,11 +6,17 @@
 /*   By: zmahomed <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/17 12:44:14 by zmahomed          #+#    #+#             */
-/*   Updated: 2019/07/17 14:19:58 by zmahomed         ###   ########.fr       */
+/*   Updated: 2019/07/23 08:48:57 by zmahomed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
+void			cd_error(char *path, char *str)
+{
+	ft_putstr(str);
+	ft_putendl(path);
+}
 
 int				change_dir(char *path, int print)
 {
@@ -29,22 +35,16 @@ int				change_dir(char *path, int print)
 	else
 	{
 		if (access(path, 0) == -1)
-		{
-			ft_putstr("cd: no such file or directory: ");
-			ft_putendl(path);
-		}
+			cd_error(path, "cd: no such file or directory: ");
 		else if (access(path, 1) == -1)
-		{
-			ft_putstr("cd: permission denied: ");
-			ft_putendl(path);
-		}
+			cd_error(path, "cd: permission denied: ");
 		return (1);
 	}
 }
 
-static int		check_cd_error(char **command)
+static int		check_cd_error(char **com)
 {
-	if (command[2])
+	if (com[2])
 	{
 		ft_putstr("cd: too many arguments\n");
 		return (1);
@@ -52,17 +52,17 @@ static int		check_cd_error(char **command)
 	return (0);
 }
 
-int				cd_b(char **command, int print)
+int				cd_b(char **com, int print)
 {
-	if ((!command[1] && ft_strequ("cd", command[0])) ||
-	ft_strequ(command[1], "--"))
+	if ((!com[1] && ft_strequ("cd", com[0])) ||
+	ft_strequ(com[1], "--"))
 		return (change_dir(get_env("HOME"), 0));
-	else if (ft_strequ(command[1], "-"))
+	else if (ft_strequ(com[1], "-"))
 		return (change_dir(get_env("OLDPWD"), 1));
 	else
 	{
-		if (check_cd_error(command))
+		if (check_cd_error(com))
 			return (1);
-		return (change_dir(command[1], print));
+		return (change_dir(com[1], print));
 	}
 }

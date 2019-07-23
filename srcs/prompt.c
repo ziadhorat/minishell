@@ -6,7 +6,7 @@
 /*   By: zmahomed <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/17 13:42:18 by zmahomed          #+#    #+#             */
-/*   Updated: 2019/07/17 13:42:20 by zmahomed         ###   ########.fr       */
+/*   Updated: 2019/07/23 08:39:40 by zmahomed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ char			*get_handled_path(void)
 
 void			display_prompt(void)
 {
-	char	*formatted_path;
+	char	*form_path;
 
-	formatted_path = get_handled_path();
-	ft_putstr(formatted_path);
-	free(formatted_path);
+	form_path = get_handled_path();
+	ft_putstr(form_path);
+	free(form_path);
 }

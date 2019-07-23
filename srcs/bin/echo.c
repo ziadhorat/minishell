@@ -6,7 +6,7 @@
 /*   By: zmahomed <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/17 12:44:30 by zmahomed          #+#    #+#             */
-/*   Updated: 2019/07/17 14:20:10 by zmahomed         ###   ########.fr       */
+/*   Updated: 2019/07/23 08:42:14 by zmahomed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void		ft_putsubstr(char *str, int index_offset, int end_offset)
 		ft_putchar(str[i++]);
 }
 
-static void		echo_command(char **str, int index)
+static void		print_com(char **str, int index)
 {
 	int		len;
 	int		start_quote;
@@ -48,24 +48,24 @@ static void		echo_command(char **str, int index)
 	}
 }
 
-int				echo_b(char **command)
+int				echo_b(char **com)
 {
 	int		i;
 	int		n_flag;
 
 	i = 1;
-	if (!command[1])
+	if (!com[1])
 	{
 		ft_putchar('\n');
 		return (0);
 	}
-	n_flag = (ft_strequ("-n", command[1]) == 1) ? 1 : 0;
+	n_flag = (ft_strequ("-n", com[1]) == 1) ? 1 : 0;
 	i += n_flag;
-	if (n_flag && !command[2])
+	if (n_flag && !com[2])
 	{
 		return (0);
 	}
-	echo_command(command, i);
+	print_com(com, i);
 	if (!n_flag)
 		ft_putchar('\n');
 	return (0);
