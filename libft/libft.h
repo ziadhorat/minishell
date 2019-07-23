@@ -6,7 +6,7 @@
 /*   By: zmahomed <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 11:49:55 by zmahomed          #+#    #+#             */
-/*   Updated: 2019/07/23 08:19:28 by zmahomed         ###   ########.fr       */
+/*   Updated: 2019/07/23 08:27:31 by zmahomed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,10 +124,10 @@ void				ft_foreach(int *tab, int len, void(*f)(int));
 */
 
 char				*ft_strjoinch(char *s1, char c);
-void				ft_freestrarray(char **str);
 char				*ft_pathjoin(char *s1, char *s2);
-int					ft_starts_with(char *to_start, char *str);
 char				*ft_strjoinchf(char *str, char c);
 char				*ft_strjoinf(char *s1, char *s2);
+void				ft_freestrarray(char **str);
+int					ft_starts_with(char *to_start, char *str);
 
 #endif
