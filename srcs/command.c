@@ -6,7 +6,7 @@
 /*   By: zmahomed <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/17 13:41:23 by zmahomed          #+#    #+#             */
-/*   Updated: 2019/07/23 08:22:59 by zmahomed         ###   ########.fr       */
+/*   Updated: 2019/07/23 09:06:36 by zmahomed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,22 +38,26 @@ char	*in_path(char **com)
 	struct stat		info;
 
 	i = 0;
+	bin = NULL;
 	bin = ft_strsplit(get_env("PATH"), ':');
-	while (bin[i])
+	if (bin != NULL)
 	{
-		if (ft_starts_with(bin[i], com[0]))
-			path = ft_strdup(com[0]);
-		else
-			path = ft_pathjoin(bin[i], com[0]);
-		if (lstat(path, &info) == -1)
-			free(path);
-		else
+		while (bin[i])
 		{
-			ft_freestrarray(bin);
-			return (path);
+			if (ft_starts_with(bin[i], com[0]))
+				path = ft_strdup(com[0]);
+			else
+				path = ft_pathjoin(bin[i], com[0]);
+			if (lstat(path, &info) == -1)
+				free(path);
+			else
+			{
+				ft_freestrarray(bin);
+				return (path);
+			}
+			i++;
 		}
-		i++;
+		ft_freestrarray(bin);
 	}
-	ft_freestrarray(bin);
 	return (NULL);
 }

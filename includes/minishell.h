@@ -6,7 +6,7 @@
 /*   By: zmahomed <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/17 13:36:09 by zmahomed          #+#    #+#             */
-/*   Updated: 2019/07/23 08:38:25 by zmahomed         ###   ########.fr       */
+/*   Updated: 2019/07/23 08:54:50 by zmahomed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define MINISHELL_H
 # define PATH_MAX 4096
 # define NOT_SPECIAL(c) ((c != '$' && c != ':') ? 1 : 0)
-# define SUCCESS 0
 # include "../libft/libft.h"
 # include <sys/types.h>
 # include <sys/stat.h>
