@@ -38,12 +38,3 @@ char			*get_handled_path(void)
 	free(h_path);
 	return (result);
 }
-
-void			display_prompt(void)
-{
-	char	*form_path;
-
-	form_path = get_handled_path();
-	ft_putstr(form_path);
-	free(form_path);
-}
