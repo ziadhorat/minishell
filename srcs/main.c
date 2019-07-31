@@ -6,7 +6,7 @@
 /*   By: zmahomed <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/17 13:42:00 by zmahomed          #+#    #+#             */
-/*   Updated: 2019/07/31 15:04:05 by mbotes           ###   ########.fr       */
+/*   Updated: 2019/07/31 15:16:43 by mbotes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int		exec_com(char **coms)
 		com = argsplit(ft_strdup(coms[i]));
 		handle_input(com);
 		ret = exec_command(com);
-		ft_freestrarray(com);	
+		ft_freestrarray(com);
 		if (ret == -1)
 		{
 			ft_freestrarray(coms);
@@ -63,7 +63,7 @@ static void		sh_level(int ac, char *av[])
 	free(level);
 }
 
-char	*ft_linehandler(char *str)
+char			*ft_linehandler(char *str)
 {
 	char	*str2;
 	char	*tmp;
