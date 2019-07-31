@@ -6,7 +6,7 @@
 /*   By: zmahomed <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/17 13:42:00 by zmahomed          #+#    #+#             */
-/*   Updated: 2019/07/23 13:56:43 by mbotes           ###   ########.fr       */
+/*   Updated: 2019/07/31 15:04:05 by mbotes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,15 @@ static int		exec_com(char **coms)
 		com = argsplit(ft_strdup(coms[i]));
 		handle_input(com);
 		ret = exec_command(com);
-		ft_freestrarray(com);
-		ft_freestrarray(coms);
+		ft_freestrarray(com);	
 		if (ret == -1)
+		{
+			ft_freestrarray(coms);
 			return (-1);
+		}
 		i++;
 	}
+	ft_freestrarray(coms);
 	return (0);
 }
 
