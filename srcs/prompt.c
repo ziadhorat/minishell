@@ -6,7 +6,7 @@
 /*   By: zmahomed <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/17 13:42:18 by zmahomed          #+#    #+#             */
-/*   Updated: 2019/07/23 13:56:20 by mbotes           ###   ########.fr       */
+/*   Updated: 2019/07/23 08:39:40 by zmahomed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,19 @@ char			*get_handled_path(void)
 	char	*h_path;
 	char	*result;
 	char	path[PATH_MAX + 1];
-	char	*tmp;
 
 	getcwd(path, PATH_MAX);
 	h_path = handle_env_path(path);
-	tmp = ft_strjoin("\033[1;31m", h_path);
-	result = ft_strjoin(tmp, "> \033[0m");
+	result = ft_strjoin(h_path, "> ");
 	free(h_path);
-	free(tmp);
 	return (result);
+}
+
+void			display_prompt(void)
+{
+	char	*form_path;
+
+	form_path = get_handled_path();
+	ft_putstr(form_path);
+	free(form_path);
 }

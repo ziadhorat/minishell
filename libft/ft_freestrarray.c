@@ -6,7 +6,7 @@
 /*   By: zmahomed <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/17 13:49:24 by zmahomed          #+#    #+#             */
-/*   Updated: 2019/07/23 13:35:54 by mbotes           ###   ########.fr       */
+/*   Updated: 2019/07/17 13:53:54 by zmahomed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_freestrarray(char **str)
 	int		i;
 
 	i = 0;
-	while ((str)[i])
-		free((str)[i++]);
+	while (str[i])
+		free(str[i++]);
 	free(str);
 }
