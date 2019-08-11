@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmahomed <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fwmoor <fwmoor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/17 13:42:00 by zmahomed          #+#    #+#             */
-/*   Updated: 2019/07/31 15:16:43 by mbotes           ###   ########.fr       */
+/*   Updated: 2019/08/11 20:26:09 by fwmoor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ char			*ft_linehandler(char *str)
 		++ptr;
 		if ((ptr = ft_strchr(ptr, '"')) == NULL)
 		{
-			str2 = readline("\033[1;32mPLEASE END DQUOTE $>\033[0m");
+			str2 = readline("\033[1;32mdquote$>\033[0m");
 			tmp = ft_strjoin(str, "\n");
 			ft_strdel(&str);
 			str = ft_strjoin(tmp, str2);
